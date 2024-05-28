@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Blog Category {% endblock title %}
+{% block main_content %}
+
+    {% for item in cat_menu_list %}
+      <h3><a href="{% url 'category' item %}">{{item}}</a></h3>
+    {% endfor %}
+   
+    
+{% endblock %}

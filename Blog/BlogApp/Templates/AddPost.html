@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Add Post{% endblock title %}
+{% block main_content %}
+
+{% if user.is_authenticated %}
+
+    <h1>Add Post</h1>
+        <div class="container">
+            <form method="POST"  enctype = "multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    {{ form.media  }} 
+                    {{ form.as_p  }} <br/>
+                </div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+
+    <script>
+    var name = "{{user.id}}";
+    document.getElementById("elder").value = name;
+</script> 
+{% else %}
+    You're not allowed here! Only the Author can perform update.
+
+{% endif %}
+   
+{% endblock %}

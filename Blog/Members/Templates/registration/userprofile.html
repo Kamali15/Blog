@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Page Profile {% endblock title %}
+{% load static  %}
+{% block main_content %}
+
+<p>User Profile ...</p>
+<div class="card mb-3" >
+<div class="row no-gutters">
+    <div class="col-md-3">
+    {% if page_user.profile_pic%}
+        <img src="{{page_user.profile_pic.url}}" class="img-fluid rounded-start" alt="...">
+    {% else %}
+        <img src="{% static '/img/profile.png' %}" class="img-fluid rounded-start"  alt="profile">
+    {% endif %}
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+        
+        <h5 class="card-title">{{page_user.first_name}} - {{page_user.last_name}}</h5>
+            <p class="small text-muted">
+              {% comment %} <a href="{% url 'show_profile_page' post.author.profile.id %}"> Profile Page </a> | {% endcomment %}
+              {% if page_user.website_url%}
+                 <a href="{{page_user.website_url}}">Website</a> |
+              {% endif %}               
+              {% if page_user.fb_url%}
+                 <a href="{{page_user.fb_url}}">Facebook</a> |
+              {% endif %}              
+              {% if page_user.instagram_url%}
+                 <a href="{{page_user.instagram_url}}">Instagram</a> </small></p>
+              {% endif %}
+            </p>
+            <p class="card-text">{{ user.profile.bio }}</p>
+           
+        
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

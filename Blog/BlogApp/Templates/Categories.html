@@ -1,0 +1,27 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block title %}Home {% endblock title %}
+{% block main_content %}
+<main>
+    <h2>Categories</h2>
+        <h6>{{cats}}</h6>
+
+        {% for obj in category_post %}
+        <div class='col-sm-6'>
+            <div class="card mb-2">
+              <div class="card-body">
+                <div class="small text-muted">{{ obj.category }}</div>
+                <h2 class="card-title">{{ obj.title }}</h2>
+                <p class="card-text">{{ obj.content }}</p>
+                <a href="{% url 'article-detail' obj.pk %}" class="btn btn-primary">Read more</a>
+                
+              </div>
+            </div>
+
+           
+        {% endfor %}
+        <a href="{% url 'category-list' %}" class="btn btn-secondary">Back</a>
+        
+
+</main>
+{% endblock main_content %}

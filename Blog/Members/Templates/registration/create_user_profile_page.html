@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Create a New Profile Page! {% endblock title %}
+{% block main_content %}
+
+{% if user.is_authenticated %}
+
+    <h1>create Profile Page... </h1></br></br>
+
+        <div class="container">
+            <form method="POST"  enctype = "multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    {{ form.media  }} 
+                    {{ form.as_p  }} <br/>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Profile Page</button>
+            </form>
+        </div>
+    
+{% else %}
+    You're not allowed here! Only the Author can perform update.
+
+{% endif %}
+
+   
+{% endblock %}
